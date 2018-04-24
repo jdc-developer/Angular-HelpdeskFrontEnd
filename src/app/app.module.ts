@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { TicketService } from './services/ticket.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UserNewComponent } from './user-new/user-new.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     MenuComponent,
     FooterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    UserNewComponent
   ],
   imports: [
     BrowserModule,
