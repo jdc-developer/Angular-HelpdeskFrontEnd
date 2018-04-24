@@ -1,6 +1,6 @@
 <app-header *ngIf="showTemplate"></app-header>
 <app-menu *ngIf="showTemplate"></app-menu>
-<div class="content-wrapper" style="min-height: 960px;">
+<div [ngClass]="showContentWrapper()" style="min-height: 960px;">
     <section class="content-header">
       <h1>
         Helpdesk

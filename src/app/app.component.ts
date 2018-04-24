@@ -20,4 +20,10 @@ export class AppComponent implements OnInit {
       show => this.showTemplate = show
     );
   }
+
+  showContentWrapper() {
+    return {
+      'content-wrapper': this.auth.isLogged()
+    };
+  }
 }
