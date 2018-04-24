@@ -45,4 +45,12 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 
+  getFormGroupClass(invalid: boolean, isDirty: boolean) {
+    return {
+      'form-group' : true,
+      'has-error': invalid && isDirty,
+      'has-success' : !invalid && isDirty
+    };
+  }
+
 }
