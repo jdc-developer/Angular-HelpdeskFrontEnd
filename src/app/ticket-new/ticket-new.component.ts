@@ -96,7 +96,7 @@ export class TicketNewComponent implements OnInit {
     for (let i = 0; i < byteCharacters.length; i++) {
         byteNumbers[i] = byteCharacters.charCodeAt(i);
     }
-    return new Uint8Array(byteNumbers);
+    return byteNumbers;
   }
 
   private showMessage(message: { type: string, text: string }): void {

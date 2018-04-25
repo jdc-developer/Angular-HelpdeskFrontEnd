@@ -9,7 +9,7 @@ export class Ticket {
         public status: string,
         public priority: string,
         public imageThumb: string,
-        public image: Uint8Array,
+        public image: number[],
         public user: User,
         public assignedUser: User,
         public date: string,
