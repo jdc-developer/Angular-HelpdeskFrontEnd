@@ -1,3 +1,4 @@
+import { DialogService } from './services/dialog-service';
 import { AuthGuard } from './services/auth-guard';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { AuthService } from './services/auth.service';
@@ -16,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { TicketService } from './services/ticket.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserNewComponent } from './user-new/user-new.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { UserNewComponent } from './user-new/user-new.component';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    UserNewComponent
+    UserNewComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,13 +38,15 @@ import { UserNewComponent } from './user-new/user-new.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
-      { path: 'user/new', component: UserNewComponent, canActivate: [AuthGuard] }
+      { path: 'user/new', component: UserNewComponent, canActivate: [AuthGuard] },
+      { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [
     UserService,
     AuthService,
     AuthGuard,
+    DialogService,
     TicketService,
     {
       provide: HTTP_INTERCEPTORS,
