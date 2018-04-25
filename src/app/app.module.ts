@@ -39,7 +39,8 @@ import { UserListComponent } from './user-list/user-list.component';
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'user/new', component: UserNewComponent, canActivate: [AuthGuard] },
-      { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard] }
+      { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard] },
+      { path: 'user/new/:id', component: UserNewComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [

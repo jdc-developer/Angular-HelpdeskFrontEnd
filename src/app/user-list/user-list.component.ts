@@ -13,7 +13,7 @@ import { DialogService } from '../services/dialog-service';
 export class UserListComponent implements OnInit {
 
   page = 0;
-  count = 0;
+  count = 10;
   pages: Array<number>;
   auth: AuthService;
   message: {};
@@ -67,6 +67,28 @@ export class UserListComponent implements OnInit {
         });
       }
     });
+  }
+
+  setNextPage(event: any) {
+    event.preventDefault();
+    if (this.page + 1 < this.pages.length) {
+      this.page++;
+      this.findAll(this.page, this.count);
+    }
+  }
+
+  setPrevPage(event: any) {
+    event.preventDefault();
+    if (this.page > 0) {
+      this.page--;
+      this.findAll(this.page, this.count);
+    }
+  }
+
+  setPage(i, event: any) {
+    event.preventDefault();
+    this.page = i;
+    this.findAll(this.page, this.count);
   }
 
   private showMessage(message: { type: string, text: string }): void {
