@@ -18,6 +18,7 @@ import { TicketService } from './services/ticket.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserNewComponent } from './user-new/user-new.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { TicketNewComponent } from './ticket-new/ticket-new.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UserListComponent } from './user-list/user-list.component';
     HomeComponent,
     LoginComponent,
     UserNewComponent,
-    UserListComponent
+    UserListComponent,
+    TicketNewComponent
   ],
   imports: [
     BrowserModule,
@@ -39,8 +41,9 @@ import { UserListComponent } from './user-list/user-list.component';
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },
       { path: 'user/new', component: UserNewComponent, canActivate: [AuthGuard] },
+      { path: 'user/new/:id', component: UserNewComponent, canActivate: [AuthGuard] },
       { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard] },
-      { path: 'user/new/:id', component: UserNewComponent, canActivate: [AuthGuard] }
+      { path: 'ticket/new', component: TicketNewComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [
