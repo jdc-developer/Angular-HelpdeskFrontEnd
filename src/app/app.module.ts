@@ -34,7 +34,8 @@ import { UserNewComponent } from './user-new/user-new.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'user/new', component: UserNewComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [

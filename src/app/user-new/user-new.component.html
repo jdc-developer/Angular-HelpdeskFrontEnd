@@ -3,7 +3,7 @@
       <h3 class="box-title">Cadastrar Usuário</h3>
     </div>
     <form class="form-horizontal" #f="ngForm" (ngSubmit)="register()">
-      <div (ngClass)="classCss" role="alert" *ngIf="message">
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
         <strong>{{ message.text }}</strong>
       </div>
       <div class="box-body">
@@ -18,7 +18,7 @@
               #email="ngModel"
               placeholder="Email"
               email>
-              <span class="help-block" *ngIf="email.invalid && email.dirty">Email inválido</span>
+            <span class="help-block" *ngIf="email.invalid && email.dirty">Email inválido</span>
           </div>
         </div>
 
@@ -33,13 +33,29 @@
               #password="ngModel"
               placeholder="Password"
               required>
-              <span class="help-block" *ngIf="password.invalid && password.dirty">Senha inválida</span>
+            <span class="help-block" *ngIf="password.invalid && password.dirty">Senha inválida</span>
+          </div>
+        </div>
+
+        <div [ngClass]="getFormGroupClass(password.invalid, password.dirty)">
+          <label for="inputProfile3" class="col-sm-2 control-label">Perfil</label>
+          <div class="col-sm-10">
+            <select [(ngModel)]="user.profile" 
+              name="profile"
+              class="form-control" 
+              id="inputProfile3"
+              #profile="ngModel"
+              required>
+              <option value="ROLE_ADMIN">Admin</option>
+              <option value="ROLE_ADMIN">Cliente</option>
+              <option value="ROLE_ADMIN">Técnico</option>
+            </select>
+            <span class="help-block" *ngIf="profile.invalid && profile.dirty">Selecione um perfil</span>
           </div>
         </div>
       </div>
       <div class="box-footer">
-        <button type="button" (click)="cancelLogin()" class="btn btn-default">Cancelar</button>
-        <button type="submit" [disabled]="f.invalid" class="btn btn-info pull-right">Logar</button>
+        <button type="submit" [disabled]="f.invalid" class="btn btn-info pull-right">Cadastrar</button>
       </div>
     </form>
   </div>

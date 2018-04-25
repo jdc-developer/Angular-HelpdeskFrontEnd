@@ -13,7 +13,7 @@ import { ResponseApi } from '../models/response-api';
 })
 export class UserNewComponent implements OnInit {
 
-  @ViewChild('form')
+  @ViewChild('f')
   form: NgForm;
 
   user = new User(null, '', '', '');
@@ -41,7 +41,7 @@ export class UserNewComponent implements OnInit {
     }, err => {
       this.showMessage({
         type: 'error',
-        text: err['error']['errprs'][0]
+        text: err['error']['errors'][0]
       });
     });
   }
@@ -59,7 +59,7 @@ export class UserNewComponent implements OnInit {
      } , err => {
         this.showMessage({
           type: 'error',
-          text: err['error']['errprs'][0]
+          text: err['error']['errors'][0]
         });
     });
   }
