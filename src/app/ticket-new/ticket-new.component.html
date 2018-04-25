@@ -60,8 +60,8 @@
         <div class="form-group">
           <label for="inputDescription3" class="col-sm-2 control-label">Imagem</label>
           <div class="col-sm-8">
-            <img [src]="ticket.image" width="50%" height="50%">
-            <input type="file" id="image" (change)="onFileChnage($event)">
+            <img [src]="ticket.imageThumb" width="50%" height="50%">
+            <input type="file" id="image" (change)="onFileChange($event)">
           </div>
         </div>
         <div class="box-footer">
@@ -71,3 +71,4 @@
     </div>
   </div>
 </div>
+<p>{{ ticket.image }}</p>

@@ -4,10 +4,12 @@ export class Ticket {
     constructor(
         public id: number,
         public number: number,
+        public description: string,
         public title: string,
         public status: string,
         public priority: string,
-        public image: string,
+        public imageThumb: string,
+        public image: Uint8Array,
         public user: User,
         public assignedUser: User,
         public date: string,

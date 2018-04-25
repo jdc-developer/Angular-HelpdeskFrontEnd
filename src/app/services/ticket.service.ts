@@ -14,7 +14,7 @@ export class TicketService {
       return this.http.put(`${HELP_DESK_API}/api/ticket`, ticket);
     } else {
       ticket.id = null;
-      ticket.status = 'New';
+      ticket.status = 'NEW';
       return this.http.post(`${HELP_DESK_API}/api/ticket`, ticket);
     }
   }

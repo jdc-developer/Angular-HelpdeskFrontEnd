@@ -17,7 +17,7 @@ export class TicketNewComponent implements OnInit {
   @ViewChild('f')
   form: NgForm;
 
-  ticket = new Ticket(null, null, '', '', '', '', null, null, '', null);
+  ticket = new Ticket(null, null, '', '', '', '', '', null, null, null, '', null);
   auth: AuthService;
   message: {};
   classCss: {};
@@ -42,15 +42,16 @@ export class TicketNewComponent implements OnInit {
     }, err => {
       this.showMessage({
         type: 'error',
-        text: err['error']['errors'][0]
+        text: err.error['message']
       });
     });
   }
 
   register() {
     this.message = {};
+    this.ticket.image = this.test(this.ticket.imageThumb);
     this.service.createOrUpdate(this.ticket).subscribe((response: ResponseApi) => {
-      this.ticket = new Ticket(null, null, '', '', '', '', null, null, '', null);
+      this.ticket = new Ticket(null, null, '', '', '', '', '', null, null, null, '', null);
       const ticketRet: Ticket = response.data;
       this.form.resetForm();
       this.showMessage({
@@ -60,7 +61,7 @@ export class TicketNewComponent implements OnInit {
      } , err => {
         this.showMessage({
           type: 'error',
-          text: err['error']['errors'][0]
+          text: err.error['message']
         });
     });
   }
@@ -72,13 +73,30 @@ export class TicketNewComponent implements OnInit {
         text: 'Tamanho máximo de arquivo excedido'
       });
     } else {
-      this.ticket.image = '';
+      this.ticket.imageThumb = '';
       const reader = new FileReader();
       reader.onloadend = (e: Event) => {
-        this.ticket.image = reader.result;
+        this.ticket.imageThumb = reader.result;
       };
       reader.readAsDataURL(event.target.files[0]);
     }
+  }
+
+  test(base64StringFromURL) {
+    const parts = base64StringFromURL.split(';base64,');
+    const contentType = parts[0].replace('data:', '');
+    const base64 = parts[1];
+    const byteArray = this.base64ToByteArray(base64);
+    return byteArray;
+  }
+
+  base64ToByteArray(base64) {
+    const byteCharacters = atob(base64);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    return new Uint8Array(byteNumbers);
   }
 
   private showMessage(message: { type: string, text: string }): void {
