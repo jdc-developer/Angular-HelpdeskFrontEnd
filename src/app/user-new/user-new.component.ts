@@ -41,7 +41,7 @@ export class UserNewComponent implements OnInit {
     }, err => {
       this.showMessage({
         type: 'error',
-        text: err['error']['errors'][0]
+        text: err.error['message']
       });
     });
   }
@@ -59,7 +59,7 @@ export class UserNewComponent implements OnInit {
      } , err => {
         this.showMessage({
           type: 'error',
-          text: err['error']['errors'][0]
+          text: err.error['message']
         });
     });
   }
