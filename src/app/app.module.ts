@@ -20,6 +20,7 @@ import { UserNewComponent } from './user-new/user-new.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { TicketNewComponent } from './ticket-new/ticket-new.component';
 import { TicketListComponent } from './ticket-list/ticket-list.component';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { TicketListComponent } from './ticket-list/ticket-list.component';
     UserNewComponent,
     UserListComponent,
     TicketNewComponent,
-    TicketListComponent
+    TicketListComponent,
+    TicketDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { TicketListComponent } from './ticket-list/ticket-list.component';
       { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard] },
       { path: 'ticket/new', component: TicketNewComponent, canActivate: [AuthGuard] },
       { path: 'ticket/new/:id', component: TicketNewComponent, canActivate: [AuthGuard] },
-      { path: 'ticket/list', component: TicketListComponent, canActivate: [AuthGuard] }
+      { path: 'ticket/list', component: TicketListComponent, canActivate: [AuthGuard] },
+      { path: 'ticket/details/:id', component: TicketDetailsComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [
