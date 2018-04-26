@@ -46,7 +46,8 @@ import { TicketListComponent } from './ticket-list/ticket-list.component';
       { path: 'user/new/:id', component: UserNewComponent, canActivate: [AuthGuard] },
       { path: 'user/list', component: UserListComponent, canActivate: [AuthGuard] },
       { path: 'ticket/new', component: TicketNewComponent, canActivate: [AuthGuard] },
-      { path: 'ticket/new/:id', component: TicketNewComponent, canActivate: [AuthGuard] }
+      { path: 'ticket/new/:id', component: TicketNewComponent, canActivate: [AuthGuard] },
+      { path: 'ticket/list', component: TicketListComponent, canActivate: [AuthGuard] }
     ])
   ],
   providers: [
